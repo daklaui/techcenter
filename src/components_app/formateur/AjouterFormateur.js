@@ -1,7 +1,48 @@
-import React from 'react'
+import { render } from '@testing-library/react';
+import React, { Component } from 'react'
 
-export default function AjouterFormateur() {
-    return (
+class Formateur extends Component
+{
+constructor(props)
+{
+  super(props)
+  this.state={
+    nom:'',
+    prenom :'',
+    email :'',
+    date_de_naissance :'',
+    adresse :'',
+    num_tel :'',
+    mot_de_passe :'',
+    cin :''
+
+  };
+  this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
+
+}
+
+handleChange(event) {
+  this.setState({[event.target.name]: event.target.value});
+};
+
+handleSubmit(event) {
+  event.preventDefault();
+  alert(`A name was submitted: ${this.state.cin}`);
+
+};
+
+
+
+
+
+
+   
+   
+   
+   render(){
+   
+   return (
 <div>
         <div className="content-header">
         <div className="container-fluid">
@@ -33,63 +74,95 @@ export default function AjouterFormateur() {
         </h3>
       </div>
       <div className="card-body">
+      <form onSubmit={this.handleSubmit}>
         <div className="row">
           <div className="col-lg-4">
             <div className="form-group">
               <label htmlFor="Hotel">Nom :</label>
-              <input type="text" className="form-control form-control-sm" />
+              <input type="text" 
+                     name="nom" 
+                     className="form-control form-control-sm"
+                     value={this.state.nom}
+                     onChange={this.handleChange}
+                     />
             </div>
           </div>
           <div className="col-lg-4">
             <div className="form-group">
-              <label htmlFor="Hotel">Prenom :</label>
-              <input type="text" className="form-control form-control-sm" />
+              <label >Prenom :</label>
+              <input type="text" 
+                    name="prenom"
+                    className="form-control form-control-sm" 
+                    value={this.state.prenom}
+                    onChange={this.handleChange}
+                    />
             </div>
           </div>
           <div className="col-lg-4">
             <div className="form-group">
-              <label htmlFor="Hotel">Cin :</label>
-              <input type="text" className="form-control form-control-sm" />
+              <label >Cin :</label>
+              <input type="text" name="cin" className="form-control form-control-sm" 
+              value={this.state.cin}
+              onChange={this.handleChange}
+              />
             </div>
           </div>
           <div className="col-lg-4">
             <div className="form-group">
               <label htmlFor="Hotel">Date de naissence :</label>
-              <input type="date" className="form-control form-control-sm" />
+              <input type="date" name="date_de_naissance" className="form-control form-control-sm"
+              value={this.state.date_de_naissance}
+              onChange={this.handleChange}
+              />
             </div>
           </div>
           <div className="col-lg-4">
             <div className="form-group">
               <label htmlFor="Hotel">Téléphone :</label>
-              <input type="number" className="form-control form-control-sm" />
+              <input type="number" name="num_tel" className="form-control form-control-sm" 
+               value={this.state.num_tel}
+               onChange={this.handleChange}
+              />
             </div>
           </div>
           <div className="col-lg-4">
             <div className="form-group">
               <label htmlFor="Hotel">Email :</label>
-              <input type="email" className="form-control form-control-sm" />
+              <input type="email" name="email" className="form-control form-control-sm"
+                 value={this.state.email}
+                 onChange={this.handleChange}
+              />
             </div>
           </div>
           <div className="col-lg-12">
             <div className="form-group">
               <label htmlFor="Hotel">Adresse :</label>
-              <input type="text" className="form-control form-control-sm" />
+              <input type="text" name="adresse" className="form-control form-control-sm"
+               value={this.state.adresse}
+               onChange={this.handleChange}
+              />
             </div>
           </div>
    
           <div className="col-lg-6">
             <div className="form-group">
               <label htmlFor="Hotel">Login :</label>
-              <input type="text" className="form-control form-control-sm" />
+              <input type="text" name="login" className="form-control form-control-sm"
+              
+              />
             </div>
           </div>
           <div className="col-lg-6">
             <div className="form-group">
               <label htmlFor="Hotel">Mot de passe :</label>
-              <input type="password" className="form-control form-control-sm" />
+              <input type="password" name="mot_de_passe" className="form-control form-control-sm"
+              
+              value={this.state.mot_de_passe}
+              onChange={this.handleChange}/>
             </div>
           </div>
         </div>
+      </form>
       </div>
       <div className="card-footer">
       <div class="row">
@@ -105,3 +178,7 @@ export default function AjouterFormateur() {
 </div>
     )
 }
+
+};
+
+export default Formateur;
