@@ -18,7 +18,7 @@ constructor(props)
 
   };
   this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
+ // this.handleSubmit = this.handleSubmit.bind(this);
 
 }
 
@@ -26,11 +26,10 @@ handleChange(event) {
   this.setState({[event.target.name]: event.target.value});
 };
 
-handleSubmit(event) {
+mySubmitHandler = (event) => {
   event.preventDefault();
-  alert(`A name was submitted: ${this.state.cin}`);
-
-};
+  alert("You are submitting " + this.state.nom);
+}
 
 
 
@@ -73,8 +72,9 @@ handleSubmit(event) {
           Ajouter Formateur
         </h3>
       </div>
+      <form onSubmit={this.mySubmitHandler}>
       <div className="card-body">
-      <form onSubmit={this.handleSubmit}>
+    
         <div className="row">
           <div className="col-lg-4">
             <div className="form-group">
@@ -162,7 +162,7 @@ handleSubmit(event) {
             </div>
           </div>
         </div>
-      </form>
+   
       </div>
       <div className="card-footer">
       <div class="row">
@@ -171,6 +171,7 @@ handleSubmit(event) {
                 <div class="col-lg-4"></div>
             </div>
       </div>
+      </form>
     </div>
   </div>
   <div className="col-lg-2"></div>
