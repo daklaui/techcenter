@@ -1,17 +1,17 @@
 import React from 'react'
 
-export default function AjouterFormateur() {
+export default function AjouterEtudiant() {
     return (
-<div>
-        <div className="content-header">
+        <div>
+             <div className="content-header">
         <div className="container-fluid">
           <div className="row mb-2">
             <div className="col-sm-6">
-              <h1 className="m-0 text-dark">Ajouter Formateur</h1>
+              <h1 className="m-0 text-dark">Ajouter Etudiant</h1>
             </div>{/* /.col */}
             <div className="col-sm-6">
               <ol className="breadcrumb float-sm-right">
-                <li className="breadcrumb-item"><a href="#">Gestion des formateurs</a></li>
+                <li className="breadcrumb-item"><a href="#">Gestion des etudiants</a></li>
                 <li className="breadcrumb-item active">Ajouter</li>
               </ol>
             </div>{/* /.col */}
@@ -29,7 +29,7 @@ export default function AjouterFormateur() {
     <div className="card card-primary">
       <div className="card-header">
         <h3 className="card-title">
-          Ajouter Formateur
+          Ajouter Etudiant
         </h3>
       </div>
       <div className="card-body">
@@ -97,11 +97,12 @@ export default function AjouterFormateur() {
                 <div class="col-lg-4">   <button type="submit" class="btn btn-primary btn-block">Ajouter</button></div>
                 <div class="col-lg-4"></div>
             </div>
+     
       </div>
     </div>
   </div>
   <div className="col-lg-2"></div>
 </div>
-</div>
+        </div>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function SideBar() {
     return (
@@ -24,7 +25,7 @@ export default function SideBar() {
         {/* Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library */}
         <li className="nav-item has-treeview menu-open">
-          <a href="#" className="nav-link active">
+          <a href="#" className="nav-link ">
             <i className="nav-icon fas fa-tachometer-alt" />
             <p>
               Gestion des formateurs
@@ -33,16 +34,16 @@ export default function SideBar() {
           </a>
           <ul className="nav nav-treeview">
             <li className="nav-item">
-              <a href="./index.html" className="nav-link">
+              <Link to={"/AjouterFormateur"} activeclassName={"active"}  className="nav-link">
                 <i className="far fa-circle nav-icon" />
                 <p>Ajouter</p>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="./index2.html" className="nav-link">
+              <Link to={"/ListeFormateurs"} activeclassName={"active"} className="nav-link">
                 <i className="far fa-circle nav-icon" />
                 <p>Liste des formateurs</p>
-              </a>
+              </Link>
             </li>
             
           </ul>
@@ -59,16 +60,16 @@ export default function SideBar() {
           </a>
           <ul className="nav nav-treeview">
             <li className="nav-item">
-              <a href="./index.html" className="nav-link">
+              <Link to={"/AjouterEtudiant"} activeclassName={"active"} className="nav-link">
                 <i className="far fa-circle nav-icon" />
                 <p>Ajouter</p>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="./index2.html" className="nav-link">
+              <Link to={"/ListeDesEtudiants"} activeclassName={"active"}  className="nav-link">
                 <i className="far fa-circle nav-icon" />
                 <p>Liste des etudiants</p>
-              </a>
+              </Link>
             </li>
             
           </ul>
