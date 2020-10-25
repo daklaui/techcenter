@@ -7,12 +7,12 @@ export default function ListeDesEtudiants() {
         <div className="container-fluid">
           <div className="row mb-2">
             <div className="col-sm-6">
-              <h1 className="m-0 text-dark">Liste des Etudiants</h1>
+              <h1 className="m-0 text-dark">Gestion des étudiants</h1>
             </div>{/* /.col */}
             <div className="col-sm-6">
               <ol className="breadcrumb float-sm-right">
-                <li className="breadcrumb-item"><a href="#">Gestion des etudiant</a></li>
-                <li className="breadcrumb-item active">Liste des etudiants</li>
+                <li className="breadcrumb-item"><a href="#">Gestion des étudiants</a></li>
+                <li className="breadcrumb-item active">Liste des étudiants</li>
               </ol>
             </div>{/* /.col */}
           </div>{/* /.row */}
@@ -25,19 +25,20 @@ export default function ListeDesEtudiants() {
     <table className="table">
   <thead>
     <tr>
-      <th style={{width: 10}}>Cin</th>
-      <th>Nom et Prenom</th>
-      <th>Date de naissence</th>
-      <th style={{width: 40}}>Telephone</th>
+      <th>Cin</th>
+      <th>Nom et Prénom</th>
+      <th>Date de naissance</th>
+        <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>09985214</td>
       <td>Update software</td>
-      <td>
-      05/06/1999</td>
-      <td>226639887</td>
+      <td >05/06/1999</td>
+        <td> <button type="submit" class="btn btn-info">Voir Details</button>
+            <button type="submit" class="btn btn-warning">Modifier</button>
+          <button type="submit" class="btn btn-danger ">Supprimer</button></td>
     </tr>
    
   </tbody>

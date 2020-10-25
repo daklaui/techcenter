@@ -25,19 +25,21 @@ export default function ListeDesFormateurs() {
     <table className="table">
   <thead>
     <tr>
-      <th style={{width: 10}}>Cin</th>
+      <th>Cin</th>
       <th>Nom et Prenom</th>
       <th>Date de naissence</th>
-      <th style={{width: 40}}>Telephone</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>09985214</td>
       <td>Update software</td>
+      <td>05/06/1999</td>
       <td>
-      05/06/1999</td>
-      <td>226639887</td>
+          <button type="submit" className="btn btn-info">Voir Details</button>
+          <button type="submit" className="btn btn-warning">Modifier</button>
+          <button type="submit" className="btn btn-danger ">Supprimer</button></td>
     </tr>
    
   </tbody>
