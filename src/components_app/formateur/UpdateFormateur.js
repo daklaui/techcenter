@@ -1,12 +1,17 @@
+import { render } from '@testing-library/react';
 import React, { Component } from 'react'
-import {add,getData}from '../../Global/Crud'
-class Etudiant extends Component
+import axios from 'axios'
+import {Update}from '../../Global/Crud'
+
+class Formateur extends Component
 {
+
 
 constructor(props)
 {
   super(props)
   this.state={
+    id:'',
     nom:'',
     prenom :'',
     email :'',
@@ -30,25 +35,27 @@ mySubmitHandler = (event) => {
   event.preventDefault();
  /* alert("You are submitting " + this.state.nom);
 console.log(this.state);*/
-let res = add('/',this.state);
+///let res = Update('/',this.state);
+alert(this.props.children.props.id);
 //this.sendDataApi(this.state);
 
 }
 
-render(){
+
+   render(){
    
-  return (
-        <div>
-             <div className="content-header">
+   return (
+<div>
+        <div className="content-header">
         <div className="container-fluid">
           <div className="row mb-2">
             <div className="col-sm-6">
-              <h1 className="m-0 text-dark">Ajouter un étudiant</h1>
+              <h1 className="m-0 text-dark">Modifier Formateur</h1>
             </div>{/* /.col */}
             <div className="col-sm-6">
               <ol className="breadcrumb float-sm-right">
-                <li className="breadcrumb-item"><a href="#">Gestion des étudiants</a></li>
-                <li className="breadcrumb-item active">Ajouter un étudiant</li>
+                <li className="breadcrumb-item"><a href="#">Gestion des formateurs</a></li>
+                <li className="breadcrumb-item active">Modifier Formateur</li>
               </ol>
             </div>{/* /.col */}
           </div>{/* /.row */}
@@ -65,15 +72,22 @@ render(){
     <div className="card card-primary">
       <div className="card-header">
         <h3 className="card-title">
-          Ajouter un étudiant
+          Modifier Formateur
         </h3>
       </div>
+      <form onSubmit={this.mySubmitHandler}>
       <div className="card-body">
-       
-      <div className="row">
-          <div className="col-lg-4">
+    
+        <div className="row">
+          <div className="col-lg-6">
             <div className="form-group">
               <label htmlFor="Hotel">Nom :</label>
+              <input type="hidden" 
+                     name="id" 
+                     className="form-control form-control-sm"
+                     value={this.state.id}
+                     onChange={this.handleChange}
+                     />
               <input type="text" 
                      name="nom" 
                      className="form-control form-control-sm"
@@ -82,7 +96,7 @@ render(){
                      />
             </div>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-6">
             <div className="form-group">
               <label >Prenom :</label>
               <input type="text" 
@@ -93,13 +107,22 @@ render(){
                     />
             </div>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-6">
             <div className="form-group">
               <label >Cin :</label>
               <input type="text" name="cin" className="form-control form-control-sm" 
               value={this.state.cin}
               onChange={this.handleChange}
               />
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="form-group">
+              <label htmlFor="Hotel">Mot de passe :</label>
+              <input type="password" name="mot_de_passe" className="form-control form-control-sm"
+              
+              value={this.state.mot_de_passe}
+              onChange={this.handleChange}/>
             </div>
           </div>
           <div className="col-lg-4">
@@ -139,39 +162,27 @@ render(){
             </div>
           </div>
    
-          <div className="col-lg-6">
-            <div className="form-group">
-              <label htmlFor="Hotel">Login :</label>
-              <input type="text" name="login" className="form-control form-control-sm"
-              
-              />
-            </div>
-          </div>
-          <div className="col-lg-6">
-            <div className="form-group">
-              <label htmlFor="Hotel">Mot de passe :</label>
-              <input type="password" name="mot_de_passe" className="form-control form-control-sm"
-              
-              value={this.state.mot_de_passe}
-              onChange={this.handleChange}/>
-            </div>
-          </div>
+
+          
         </div>
+   
       </div>
       <div className="card-footer">
       <div class="row">
                 <div class="col-lg-4"></div>
-                <div class="col-lg-4">   <button type="submit" class="btn btn-primary btn-block">Ajouter l'étudiant</button></div>
+                <div class="col-lg-4">   <button type="submit" class="btn btn-primary btn-block">Modifier</button></div>
                 <div class="col-lg-4"></div>
             </div>
-     
       </div>
+      </form>
     </div>
   </div>
   <div className="col-lg-2"></div>
 </div>
-        </div>
+</div>
     )
 }
-}
-export default Etudiant;
+
+};
+
+export default Formateur;

@@ -1,11 +1,7 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react'
 import axios from 'axios'
-
-//add url api
-const api = axios.create({
-  baseURL:''
-});
+import {add,getData}from '../../Global/Crud'
 
 class Formateur extends Component
 {
@@ -36,26 +32,14 @@ handleChange(event) {
 
 mySubmitHandler = (event) => {
   event.preventDefault();
-  alert("You are submitting " + this.state.nom);
-console.log(this.state);
+ /* alert("You are submitting " + this.state.nom);
+console.log(this.state);*/
+let res = add('/',this.state);
 //this.sendDataApi(this.state);
 
 }
 
-// fn send data 
 
-sendDataApi=async(data)=>
-{
-  let res=await api.post('/',data);
-  alert(res);
-}
-
-
-
-
-   
-   
-   
    render(){
    
    return (

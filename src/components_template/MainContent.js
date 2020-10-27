@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import AjouterFormateur from '../components_app/formateur/AjouterFormateur'
 import ListeDesFormateurs from '../components_app/formateur/ListeDesFormateurs'
+import UpdateFormateur from '../components_app/formateur/UpdateFormateur'
 import AjouterEtudiant from '../components_app/etudiant/AjouterEtudiant'
 import ListeDesEtudiants from '../components_app/etudiant/ListeDesEtudiants'
 export default function MainContent() {
@@ -14,6 +15,7 @@ export default function MainContent() {
    {/* <AjouterFormateur></AjouterFormateur>*/}
 <Switch>
 <Route path="/AjouterFormateur" component={AjouterFormateur}/>
+<Route path="/UpdateFormateur/:id" component={UpdateFormateur}/>
 <Route path="/ListeFormateurs" component={ListeDesFormateurs}/>
 <Route path="/AjouterEtudiant" component={AjouterEtudiant}/>
 <Route path="/ListeDesEtudiants" component={ListeDesEtudiants}/>
