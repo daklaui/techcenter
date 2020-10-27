@@ -33,8 +33,8 @@ export default function ListeDesEtudiants() {
   </thead>
   <tbody>
     <tr>
-      <td>09985214</td>
-      <td>Update software</td>
+      <td>07220955</td>
+      <td>Moataz Daklaui</td>
       <td >05/06/1999</td>
         <td> <button type="submit" class="btn btn-info">Voir Details</button>
             <button type="submit" class="btn btn-warning">Modifier</button>

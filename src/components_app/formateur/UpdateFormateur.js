@@ -3,6 +3,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {Update}from '../../Global/Crud'
 
+
+const api = axios.create({
+  baseURL:'http://localhost:6039'
+});
+
 class Formateur extends Component
 {
 

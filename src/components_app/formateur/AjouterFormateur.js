@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {add,getData}from '../../Global/Crud'
 
+const api = axios.create({
+  baseURL:'http://localhost:6039'
+});
+
 class Formateur extends Component
 {
 
@@ -34,7 +38,7 @@ mySubmitHandler = (event) => {
   event.preventDefault();
  /* alert("You are submitting " + this.state.nom);
 console.log(this.state);*/
-let res = add('/',this.state);
+let res = add('http://localhost:6039/AjoutFormateur',this.state);
 //this.sendDataApi(this.state);
 
 }
@@ -52,7 +56,7 @@ let res = add('/',this.state);
             </div>{/* /.col */}
             <div className="col-sm-6">
               <ol className="breadcrumb float-sm-right">
-                <li className="breadcrumb-item"><a href="#">Gestion des formateurs</a></li>
+                <li className="breadcrumb-item"><a href="#">Ajouter unformateur</a></li>
                 <li className="breadcrumb-item active">Ajouter</li>
               </ol>
             </div>{/* /.col */}
