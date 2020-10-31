@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 const api = axios.create({
-  baseURL:''
+  baseURL:'http://localhost:6039'
 });
 
 class ListeDesFormateurs extends Component
@@ -10,7 +10,8 @@ class ListeDesFormateurs extends Component
 constructor()
 {
   super();
-  api.get('/').then(res=>{
+  api.get('/ListedesFormateurs').then(res=>{
+    console.log(res.data);
 
   });
 }
@@ -43,16 +44,16 @@ constructor()
 <thead>
 <tr>
   <th>Cin</th>
-  <th>Nom et Prenom</th>
-  <th>Date de naissence</th>
+  <th>Nom et Prénom</th>
+  <th>Date de naissance</th>
   <th>Action</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>09985214</td>
-  <td>Update software</td>
-  <td>05/06/1999</td>
+  <td>07228689</td>
+  <td>Med Hakim Trabelsi</td>
+  <td>10/12/1998</td>
   <td>
       <button type="submit" className="btn btn-info">Voir Details</button>
       <button type="submit" className="btn btn-warning">Modifier</button>

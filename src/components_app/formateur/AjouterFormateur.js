@@ -5,6 +5,7 @@ import {add,getData}from '../../Global/Crud'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 
+
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'strawberry', label: 'Strawberry' },
@@ -26,6 +27,7 @@ const validEmailRegex =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|("
     );
     return valid;
   }
+
 class Formateur extends Component
 {
 
@@ -161,7 +163,7 @@ if(validateForm(this.state.errors)) {
             </div>{/* /.col */}
             <div className="col-sm-6">
               <ol className="breadcrumb float-sm-right">
-                <li className="breadcrumb-item"><a href="#">Gestion des formateurs</a></li>
+                <li className="breadcrumb-item"><a href="#">Ajouter unformateur</a></li>
                 <li className="breadcrumb-item active">Ajouter</li>
               </ol>
             </div>{/* /.col */}
