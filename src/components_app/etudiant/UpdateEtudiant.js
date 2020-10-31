@@ -1,19 +1,6 @@
 import React, { Component } from 'react'
 import {add,getData}from '../../Global/Crud'
-import Validator from 'react-forms-validator';
-const valide=true;
-const validEmailRegex = 
-  RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-
-  const validateForm = (errors) => {
-    let valid = true;
-    Object.values(errors).forEach(
-      // if we have an error string set valid to false
-      (val) => val.length > 0 && (valid = false)
-    );
-    return valid;
-  }
-  class Etudiant extends Component
+class updateEtudiant extends Component
 {
 
 constructor(props)
@@ -27,127 +14,43 @@ constructor(props)
     adresse :'',
     num_tel :'',
     mot_de_passe :'',
-   
-    cin :'',
-    errors: {
-      nom:'',
-      prenom :'',
-      email :'',
-      date_de_naissance :'',
-     
-      num_tel :'',
-      mot_de_passe :'',
-      
-      cin :''
-    }
+    formationTitre :'',
+    session :'',
+    cin :''
 
   };
   this.handleChange = this.handleChange.bind(this);
-
  // this.handleSubmit = this.handleSubmit.bind(this);
 
 }
 
 handleChange(event) {
-  //this.setState({[event.target.name]: event.target.value});
-  const { name, value } = event.target;
-  let errors = this.state.errors;
-  
-switch(name)
-{
-  case 'nom':
-      if(value.length==0)
-      {
-        errors.nom='Ce champ est obligatoire.';
-      }
-      else
-      {
-        errors.nom=valide+'';
-      }
-
-      if(value.length<3)
-      {
-        errors.nom='Veuillez fournir au moins 3 caractères.';
-      }
-      else
-      {
-        errors.nom=valide+'';
-      }
-      break;
-      case 'prenom':
-        if(value.length==0)
-      {
-        errors.prenom='Ce champ est obligatoire.';
-      }
-      else
-      {
-        errors.prenom=valide+'';
-      }
-
-      if(value.length<3)
-      {
-        errors.prenom='Veuillez fournir au moins 3 caractères.';
-      }
-      else
-      {
-        errors.prenom=valide+'';
-      }
-      break;  
-
-      case 'email':
-      errors.email = validEmailRegex.test(value)?  'Veuillez fournir une adresse électronique valide.':valide+'';
-      break; 
-      case 'mot_de_passe': 
-      errors.mot_de_passe = value.length < 8 ? 'Veuillez fournir au plus 8 caractères.' :valide+'';
-      errors.mot_de_passe = value.length > 8 ? 'Veuillez fournir au moins 8 caractères.' :valide+'';
-      break;
-      case 'cin': 
-      errors.cin = value.length < 8 ? 'Veuillez fournir au plus 8 caractères.' :valide+'';
-      errors.cin = value.length > 8 ? 'Veuillez fournir au moins 8 caractères.' :valide+'';
-      break;
-      case 'date_de_naissance': 
-      errors.date_de_naissance = value.length ==0? 'Ce champ est obligatoire.' :valide+'';
-      
-      break;
-    default:
-      break; 
-     
-}
-this.setState({errors,[event.target.name]: event.target.value}); 
-console.log(errors);
+  this.setState({[event.target.name]: event.target.value});
 };
-
-
-
 
 mySubmitHandler = (event) => {
   event.preventDefault();
- 
  /* alert("You are submitting " + this.state.nom);
 console.log(this.state);*/
-//let res = add('/',this.state);
+let res = add('/',this.state);
 //this.sendDataApi(this.state);
-if(validateForm(this.state.errors)) {
-  console.info('Valid Form')
-}else{
-  console.error('Invalid Form')
-}
+
 }
 
 render(){
-  const {errors} = this.state;
+   
   return (
         <div>
              <div className="content-header">
         <div className="container-fluid">
           <div className="row mb-2">
             <div className="col-sm-6">
-              <h1 className="m-0 text-dark">Ajouter un étudiant</h1>
+              <h1 className="m-0 text-dark">Modifier un étudiant</h1>
             </div>{/* /.col */}
             <div className="col-sm-6">
               <ol className="breadcrumb float-sm-right">
                 <li className="breadcrumb-item"><a href="#">Gestion des étudiants</a></li>
-                <li className="breadcrumb-item active">Ajouter un étudiant</li>
+                <li className="breadcrumb-item active">Modifier un étudiant</li>
               </ol>
             </div>{/* /.col */}
           </div>{/* /.row */}
@@ -164,25 +67,21 @@ render(){
     <div className="card card-primary">
       <div className="card-header">
         <h3 className="card-title">
-          Ajouter un étudiant
+        Modifier un étudiant
         </h3>
       </div>
-      <form onSubmit={this.mySubmitHandler} noValidate>
       <div className="card-body">
-     
+       
       <div className="row">
           <div className="col-lg-4">
             <div className="form-group">
               <label htmlFor="Hotel">Nom :</label>
               <input type="text" 
                      name="nom" 
-                     className={"form-control form-control-sm "+(errors.nom!=="true"  ? "is-invalid" :"is-valid")}
+                     className="form-control form-control-sm"
                      value={this.state.nom}
                      onChange={this.handleChange}
-                     noValidate
                      />
-                   {errors.nom!=="true"  && 
-                <span className='error invalid-feedback'>{errors.nom}</span>}     
             </div>
           </div>
           <div className="col-lg-4">
@@ -260,18 +159,15 @@ render(){
             </div>
           </div>
         </div>
-      
       </div>
-      
       <div className="card-footer">
       <div class="row">
                 <div class="col-lg-4"></div>
-                <div class="col-lg-4">   <button type="submit" class="btn btn-primary btn-block">Ajouter l'étudiant</button></div>
+                <div class="col-lg-4">   <button type="submit" class="btn btn-primary btn-block">Modifier l'étudiant</button></div>
                 <div class="col-lg-4"></div>
             </div>
      
       </div>
-      </form>
     </div>
   </div>
   <div className="col-lg-2"></div>
@@ -280,4 +176,4 @@ render(){
     )
 }
 }
-export default Etudiant;
+export default updateEtudiant;

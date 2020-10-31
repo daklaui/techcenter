@@ -6,6 +6,10 @@ import ListeDesFormateurs from '../components_app/formateur/ListeDesFormateurs'
 import UpdateFormateur from '../components_app/formateur/UpdateFormateur'
 import AjouterEtudiant from '../components_app/etudiant/AjouterEtudiant'
 import ListeDesEtudiants from '../components_app/etudiant/ListeDesEtudiants'
+import AjouterFormation from '../components_app/formation/AjouterFormatio'
+import Affectation from '../components_app/formation/AffectaionFormationFormateur'
+import AffectationEtudiant from '../components_app/etudiant/AffectaionFormationEtudiant'
+import ListeDesFormations from '../components_app/formation/ListeDesFormations'
 export default function MainContent() {
     return (
 <div className="content-wrapper">
@@ -19,6 +23,10 @@ export default function MainContent() {
 <Route path="/ListeFormateurs" component={ListeDesFormateurs}/>
 <Route path="/AjouterEtudiant" component={AjouterEtudiant}/>
 <Route path="/ListeDesEtudiants" component={ListeDesEtudiants}/>
+<Route path="/AjouterFormation" component={AjouterFormation}/>
+<Route path="/Affectation" component={Affectation}/>
+<Route path="/AffectationEtudiant" component={AffectationEtudiant}/>
+<Route path="/ListeDesFormations" component={ListeDesFormations}/>
 </Switch>
 
  
