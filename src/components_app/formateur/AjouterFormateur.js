@@ -4,13 +4,14 @@ import axios from 'axios'
 import {add,getData}from '../../Global/Crud'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
-
+const $ = require('jquery')
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' }
 ]
+
 
 
 
@@ -59,10 +60,13 @@ constructor(props)
 
 }
 
+
+
+
 handleChange(event) {
   const { name, value } = event.target;
   let errors = this.state.errors;
- 
+
 
   switch(name)
   {
@@ -84,7 +88,9 @@ handleChange(event) {
         {
           errors.nom=valide+'';
         }
+
         break;
+
         case 'prenom':
           if(value.length==0)
         {
@@ -106,7 +112,15 @@ handleChange(event) {
         break;  
   
         case 'email':
-        errors.email = validEmailRegex.test(value)?  'Veuillez fournir une adresse électronique valide.':valide+'';
+          if( validEmailRegex.test(value))
+          {
+            errors.email =  'Veuillez fournir une adresse électronique valide.';
+          }
+          else
+          {
+          errors.email=valide+'';
+          }
+       
         break; 
         case 'num_tel':
           errors.num_tel = value.length < 8 || value.length > 8 ? 'Veuillez fournir  8 caractères.' :valide+'';
@@ -139,12 +153,12 @@ handleChange(event) {
 
 mySubmitHandler = (event) => {
   event.preventDefault();
- /* alert("You are submitting " + this.state.nom);
+
+if(validateForm(this.state.errors)) {
+   /* alert("You are submitting " + this.state.nom);
 console.log(this.state);*/
 //let res = add('/',this.state);
 //this.sendDataApi(this.state);
-if(validateForm(this.state.errors)) {
-  console.info('Valid Form')
 }else{
   console.error('Invalid Form')
 }

@@ -7,6 +7,16 @@ const api = axios.create({
 class ListeDesFormateurs extends Component
 {
 
+
+
+componentDidMount()
+{
+  const script =document.createElement("script");
+  script.src='js/Content.js';
+  script.async=true;
+  document.body.appendChild(script);
+}
+
 constructor()
 {
   super();
@@ -40,7 +50,7 @@ constructor()
 
   <div className="row">
 <div className="col-lg-12">
-<table className="table">
+<table className="table table-bordered table-striped table-sm" id="example2">
 <thead>
 <tr>
   <th>Cin</th>
@@ -55,9 +65,12 @@ constructor()
   <td>Med Hakim Trabelsi</td>
   <td>10/12/1998</td>
   <td>
-      <button type="submit" className="btn btn-info">Voir Details</button>
-      <button type="submit" className="btn btn-warning">Modifier</button>
-      <button type="submit" className="btn btn-danger ">Supprimer</button></td>
+    <div className="margin">
+      <button type="submit" className="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Voir Details</button>
+      <button type="submit" className="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Modifier</button>
+      <button type="submit" className="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i>Supprimer</button>
+      </div>
+      </td>
 </tr>
 
 </tbody>
