@@ -13,3 +13,12 @@ $(function () {
       "responsive": true,
     });
   });
+
+  $(function () {
+   $("#submitEtudiant").click(function(){
+  
+     alert("test"); 
+   });
+   
+  });
+

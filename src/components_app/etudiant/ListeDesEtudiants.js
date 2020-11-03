@@ -1,7 +1,52 @@
-import React from 'react'
+import { render } from '@testing-library/react'
+import React, { Component } from 'react'
+import {getUsers,removeEtudiantByCin} from  '../../Service/EtudiantService'
+import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
+ class ListeDesEtudiants extends Component {
 
-export default function ListeDesEtudiants() {
-    return (
+  componentDidMount()
+  {
+    const script =document.createElement("script");
+    script.src='js/Content.js';
+    script.async=true;
+    document.body.appendChild(script);
+  }
+constructor(props)
+{
+  super(props)
+  this.state = {etudiants: [{}]};
+  
+getUsers().then((response) => {
+          this.setState({etudiants: response.data});
+      });
+
+}
+
+removeEtudiant=(cin)=>{
+  removeEtudiantByCin(cin).then(response=>{
+         if(response.status==200)
+         {
+          Swal.fire({
+            icon: 'success',
+            title: response.data,
+            showConfirmButton: false,
+            timer: 1500
+          });
+            
+getUsers().then((response) => {
+  this.setState({etudiants: response.data});
+});
+         }
+  });
+
+}
+
+
+
+
+
+  render(){  return  (
         <div>
             <div className="content-header">
         <div className="container-fluid">
@@ -22,7 +67,7 @@ export default function ListeDesEtudiants() {
 
       <div className="row">
     <div className="col-lg-12">
-    <table className="table">
+    <table className="table table-bordered table-striped table-sm" id="example2">
   <thead>
     <tr>
       <th>Cin</th>
@@ -32,17 +77,24 @@ export default function ListeDesEtudiants() {
     </tr>
   </thead>
   <tbody>
+  {this.state.etudiants.map((etudiant) => (
     <tr>
-      <td>07220955</td>
-      <td>Moataz Daklaui</td>
-      <td >05/06/1999</td>
-        <td> <button type="submit" class="btn btn-info">Voir Details</button>
-            <button type="submit" class="btn btn-warning">Modifier</button>
-          <button type="submit" class="btn btn-danger ">Supprimer</button></td>
+      <td>{etudiant.cin}</td>
+      <td>{etudiant.nom}</td>
+      <td >{etudiant.date_de_naissance}</td>
+        <td> <button type="button" className="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Voir Details</button>
+           
+           
+        <Link to={"/UpdateEtudiant/"+etudiant.cin} className="btn btn-warning btn-sm">
+        <i class="fas fa-edit"></i> Modifier
+              </Link>
+           
+          <button type="button" onClick={()=>this.removeEtudiant(etudiant.cin)}  className="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i> Supprimer</button></td>
     </tr>
-   
+  ))}
   </tbody>
 </table>
+
 
 
     </div>
@@ -51,3 +103,6 @@ export default function ListeDesEtudiants() {
         </div>
     )
 }
+}
+
+export default  ListeDesEtudiants ;
