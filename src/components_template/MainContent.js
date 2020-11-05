@@ -21,13 +21,16 @@ export default function MainContent() {
 <Switch>
 <Route path="/AjouterFormateur" component={AjouterFormateur}/>
 <Route path="/UpdateFormateur/:id" component={UpdateFormateur}/>
-<Route path="/UpdateEtudiant/:id" component={UpdateEtudiant}/>
 <Route path="/ListeFormateurs" component={ListeDesFormateurs}/>
+<Route path="/Affectation" component={Affectation}/>
+
+
+<Route path="/UpdateEtudiant/:id" component={UpdateEtudiant}/>
 <Route path="/AjouterEtudiant" component={AjouterEtudiant}/>
 <Route path="/ListeDesEtudiants" component={ListeDesEtudiants}/>
-<Route path="/AjouterFormation" component={AjouterFormation}/>
-<Route path="/Affectation" component={Affectation}/>
 <Route path="/AffectationEtudiant" component={AffectationEtudiant}/>
+
+<Route path="/AjouterFormation" component={AjouterFormation}/>
 <Route path="/ListeDesFormations" component={ListeDesFormations}/>
 </Switch>
 

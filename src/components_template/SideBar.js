@@ -45,6 +45,12 @@ export default function SideBar() {
                 <p>Liste des formateurs</p>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/Affectation"} activeclassName={"active"} className="nav-link">
+                <i className="far fa-circle nav-icon" />
+                <p>Affecter un formateur</p>
+              </Link>
+            </li>
             
           </ul>
         </li>
@@ -71,9 +77,44 @@ export default function SideBar() {
                 <p>Liste des étudiants</p>
               </Link>
             </li>
-            
+            <li className="nav-item">
+              <Link to={"/AffectationEtudiant"} activeclassName={"active"} className="nav-link">
+                <i className="far fa-circle nav-icon" />
+                <p>Affecter un étudiant</p>
+              </Link>
+            </li>
           </ul>
         </li>
+
+        <li className="nav-item has-treeview">
+          <a href="#" className="nav-link ">
+            <i className="nav-icon fas fa-tachometer-alt" />
+            <p>
+              Gestion des formations
+              <i className="right fas fa-angle-left" />
+            </p>
+          </a>
+          <ul className="nav nav-treeview">
+            <li className="nav-item">
+              <Link to={"/AjouterFormation"} activeclassName={"active"} className="nav-link">
+                <i className="far fa-circle nav-icon" />
+                <p>Ajouter une formation</p>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/ListeDesFormations"} activeclassName={"active"}  className="nav-link">
+                <i className="far fa-circle nav-icon" />
+                <p>Liste des formations</p>
+              </Link>
+            </li>
+
+
+
+          </ul>
+        </li>
+
+
+
       </ul>
     </nav>
     {/* /.sidebar-menu */}

@@ -10,7 +10,7 @@ const  api = axios.create({
   });
 const valide=true;
 
-const validationFormByFiled = (name,value)=> 
+const validationFormByField = (name,value)=>
 {
 
   switch(name)
@@ -119,7 +119,7 @@ handleChange(event) {
 
   const { name, value } = event.target;
   let errors = this.state.errors;
-  errors[name]= validationFormByFiled(name,value);
+  errors[name]= validationFormByField(name,value);
   
   if(isValideForm(errors)) {
     errors.disabledBtn =false;
@@ -139,7 +139,7 @@ mySubmitHandler = (event) => {
 
 let errors = this.state.errors;
 Object.keys(this.state).forEach(key => {
-  errors[key]=validationFormByFiled(key,this.state[key]);
+  errors[key]=validationFormByField(key,this.state[key]);
 
 });
 
@@ -178,18 +178,6 @@ if(isValideForm(errors)) {
   this.setState({errors}); 
 }
 
- /*
-let res = add('/AjoutEtudiant',this.state);
-res.then(data=>{alert(data.data);});
-*/
-
-/*
-//this.sendDataApi(this.state);
-if(validateForm(this.state.errors)) {
-  console.info('Valid Form')
-}else{
-  console.error('Invalid Form')
-}*/
 }
 
 
@@ -201,12 +189,12 @@ render(){
       <div className="container-fluid">
         <div className="row mb-2">
           <div className="col-sm-6">
-            <h1 className="m-0 text-dark">Ajouter Formateur</h1>
+            <h1 className="m-0 text-dark">Ajout d'un étudiant</h1>
           </div>{/* /.col */}
           <div className="col-sm-6">
             <ol className="breadcrumb float-sm-right">
-              <li className="breadcrumb-item"><a href="#">Ajouter unformateur</a></li>
-              <li className="breadcrumb-item active">Ajouter</li>
+              <li className="breadcrumb-item"><a href="#">Gestion des étudiants</a></li>
+              <li className="breadcrumb-item active">Ajouter un étudiant</li>
             </ol>
           </div>{/* /.col */}
         </div>{/* /.row */}
@@ -223,7 +211,7 @@ render(){
   <div className="card card-primary">
     <div className="card-header">
       <h3 className="card-title">
-        Ajouter Formateur
+        Ajouter un étudiant
       </h3>
     </div>
     <form onSubmit={this.mySubmitHandler} id="formAddEtudiant">
