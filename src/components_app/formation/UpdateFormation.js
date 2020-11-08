@@ -3,6 +3,8 @@ import Select from 'react-select'
 import {isEmpty,isMin}from '../../Global/Validator'
 import $ from 'jquery'
 import { modifierFormationById,getFormationById } from '../../Service/FormationService'
+
+import ListeDesSessions from '../Session/ListeSessions'
 import Swal from 'sweetalert2'
 const options = [
     { value: '', label: '*****************' },
@@ -157,6 +159,8 @@ this.setState({errors,[event.target.name]: event.target.value});
   };*/
 render(){
   const {errors} = this.state;
+  const{idFormationFromUpdate}=this.props.match.params.id;
+  console.log(this.props.match.params.id);
     return (
  <div>
          <div className="content-header">
@@ -175,105 +179,133 @@ render(){
          </div>{/* /.container-fluid */}
        </div>
      
- 
- 
- 
- 
-         <div className="row">
-           
-   <div className="col-lg-12">
-     <div className="card card-primary">
-       <div className="card-header">
-         <h3 className="card-title">
-           Modifier Formation
-         </h3>
-       </div>
-       <form onSubmit={this.mySubmitHandler}>
-       <div className="card-body">
-     
-         <div className="row">
-           <div className="col-lg-4">
-             <div className="form-group">
-               <label >Titre :</label>
-               <input type="text" 
-                      name="titre" 
-                      className={errors.titre.length!=0?"form-control form-control-sm "+(errors.titre!=="true"  ? "is-invalid" :"is-valid"):"form-control form-control-sm "}
-                      value={this.state.titre}
-                      onChange={this.handleChange}
-                      />
-
-{errors.titre!=="true"  && <span className='error invalid-feedback'>{errors.titre}</span>}  
-             </div>
-
-            
-             <div className="form-group">
-               <label htmlFor="Hotel">Niveau</label>
-               <select  
-               name="niveau" 
-               className={errors.niveau.length!=0?"form-control form-control-sm "+(errors.niveau!=="true"  ? "is-invalid" :"is-valid"):"form-control form-control-sm "}
-               style={{width: "100%"}}
-               value={this.state.niveau}
-               onChange={this.handleChange} >
-                {options.map((option)=>(
-                     <option value={option.value}>{option.label}</option>
-                ))}
-              
-              
-               </select>
-               {errors.niveau!=="true"  && <span className='error invalid-feedback'>{errors.niveau}</span>}  
-             </div>
-         
-
-             <div className="form-group">
-               <label htmlFor="Hotel">Matiers</label>
-               <select  
-               name="matier" 
-               multpile
-               className={errors.matier.length!=0?"form-control form-control-sm "+(errors.matier!=="true"  ? "is-invalid" :"is-valid"):"form-control form-control-sm "}
-               style={{width: "100%"}}
-               value={this.state.matier}
-               onChange={this.handleChange} >
-                {options.map((option,i)=>(
-                     <option value={option.value}>{option.label}</option>
-                ))}
-              
-              
-               </select>
-               {errors.matier!=="true"  && <span className='error invalid-feedback'>{errors.matier}</span>}  
-             </div>
-           </div>
-           <div className="col-lg-8">
-             <div className="form-group">
-               <label >Description :</label> 
-              <textarea 
-             className={errors.description.length!=0?"form-control form-control-sm "+(errors.description!=="true"  ? "is-invalid" :"is-valid"):"form-control form-control-sm "}
-              rows="9" 
-              name="description"
-              placeholder="Enter ..." 
-              value={this.state.description}  
-              onChange={this.handleChange}/> 
-         
-{errors.description!=="true"  && <span className='error invalid-feedback'>{errors.description}</span>}  
-            </div>
-
-           </div>
-
-
-         </div>
+ <div class="row">
+ <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#modifierFormation" data-toggle="tab">Modifier formation</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#ajouterSession" data-toggle="tab">Ajouter session</a></li>
     
-       </div>
-       <div className="card-footer">
-       <div class="row">
-                 <div class="col-lg-4"></div>
-                 <div class="col-lg-4">   <button type="submit" class="btn btn-primary btn-block">Modifier</button></div>
-                 <div class="col-lg-4"></div>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="modifierFormation">
+                  <div className="row">
+           
+           <div className="col-lg-12">
+             <div className="card card-primary">
+               <div className="card-header">
+                 <h3 className="card-title">
+                   Modifier Formation
+                 </h3>
+               </div>
+               <form onSubmit={this.mySubmitHandler}>
+               <div className="card-body">
+             
+                 <div className="row">
+                   <div className="col-lg-4">
+                     <div className="form-group">
+                       <label >Titre :</label>
+                       <input type="text" 
+                              name="titre" 
+                              className={errors.titre.length!=0?"form-control form-control-sm "+(errors.titre!=="true"  ? "is-invalid" :"is-valid"):"form-control form-control-sm "}
+                              value={this.state.titre}
+                              onChange={this.handleChange}
+                              />
+        
+        {errors.titre!=="true"  && <span className='error invalid-feedback'>{errors.titre}</span>}  
+                     </div>
+        
+                    
+                     <div className="form-group">
+                       <label htmlFor="Hotel">Niveau</label>
+                       <select  
+                       name="niveau" 
+                       className={errors.niveau.length!=0?"form-control form-control-sm "+(errors.niveau!=="true"  ? "is-invalid" :"is-valid"):"form-control form-control-sm "}
+                       style={{width: "100%"}}
+                       value={this.state.niveau}
+                       onChange={this.handleChange} >
+                        {options.map((option)=>(
+                             <option value={option.value}>{option.label}</option>
+                        ))}
+                      
+                      
+                       </select>
+                       {errors.niveau!=="true"  && <span className='error invalid-feedback'>{errors.niveau}</span>}  
+                     </div>
+                 
+        
+                     <div className="form-group">
+                       <label htmlFor="Hotel">Matiers</label>
+                       <select  
+                       name="matier" 
+                       multpile
+                       className={errors.matier.length!=0?"form-control form-control-sm "+(errors.matier!=="true"  ? "is-invalid" :"is-valid"):"form-control form-control-sm "}
+                       style={{width: "100%"}}
+                       value={this.state.matier}
+                       onChange={this.handleChange} >
+                        {options.map((option,i)=>(
+                             <option value={option.value}>{option.label}</option>
+                        ))}
+                      
+                      
+                       </select>
+                       {errors.matier!=="true"  && <span className='error invalid-feedback'>{errors.matier}</span>}  
+                     </div>
+                   </div>
+                   <div className="col-lg-8">
+                     <div className="form-group">
+                       <label >Description :</label> 
+                      <textarea 
+                     className={errors.description.length!=0?"form-control form-control-sm "+(errors.description!=="true"  ? "is-invalid" :"is-valid"):"form-control form-control-sm "}
+                      rows="9" 
+                      name="description"
+                      placeholder="Enter ..." 
+                      value={this.state.description}  
+                      onChange={this.handleChange}/> 
+                 
+        {errors.description!=="true"  && <span className='error invalid-feedback'>{errors.description}</span>}  
+                    </div>
+        
+                   </div>
+        
+        
+                 </div>
+            
+               </div>
+               <div className="card-footer">
+               <div class="row">
+                         <div class="col-lg-4"></div>
+                         <div class="col-lg-4">   <button type="submit" class="btn btn-primary btn-block">Modifier</button></div>
+                         <div class="col-lg-4"></div>
+                     </div>
+               </div>
+               </form>
              </div>
-       </div>
-       </form>
-     </div>
-   </div>
+           </div>
+        
+         </div>
 
+                  </div>
+                  <div class="tab-pane" id="ajouterSession">
+
+                  <ListeDesSessions idFormation={this.props.match.params.id}></ListeDesSessions>
+
+          
+
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+        
+          </div>
  </div>
+ 
+ 
+ 
  </div>
      )
  }
