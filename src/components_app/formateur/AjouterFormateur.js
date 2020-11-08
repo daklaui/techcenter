@@ -100,6 +100,7 @@ class Formateur extends Component
             num_tel :'',
             mot_de_passe :'',
             cin :'',
+            
             errors: {
                 nom:'',
                 prenom :'',

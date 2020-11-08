@@ -1,24 +1,22 @@
 import {baseURL} from '../Global/Const';
 const axios = require("axios").default;
-let urlGetFormateurs = baseURL+"/ListedesFormateurs";
-let urlGetFormateurByCin = baseURL+"/getFormateurByCin";
-let urlDeleteFormateur = baseURL+"/SupprimerFormateur";
-let urlModifierFormateurs = baseURL+"/UpdateFormateur";
-
-
-export const getUsers=()=>{
-    return axios.get(urlGetFormateurs);
+let urlGetEtudiants = baseURL+"/ListedesEtudiants";
+let urlGetEtudiantByCin = baseURL+"/getEtudiantByCin";
+let urlDeleteEtudiants = baseURL+"/SupprimerEtudiant";
+let urlModifierEtudiants = baseURL+"/UpdateEtudiant";
+export const  getUsers=()=>{
+    return axios.get(urlGetEtudiants);
 }
 
-export const getFormateurByCin=(cin)=>{
-    return axios.get(urlGetFormateurByCin+"/"+cin);
+export const  getFormateurByCin=(cin)=>{
+    return axios.get(urlGetEtudiantByCin+"/"+cin);
 }
 
 
-export const removeFormateurByCin=(cin)=>{
-    return axios.delete(urlDeleteFormateur+"/"+cin);
+export const  removeFormateurByCin=(cin)=>{
+    return axios.delete(urlDeleteEtudiants+"/"+cin);
 }
 
-export const modifierFormateurByCin=(cin,formateur)=>{
-    return axios.put(urlModifierFormateurs+"/"+cin,formateur);
+export const  modifierFormateurByCin=(cin,etudiant)=>{
+    return axios.put(urlModifierEtudiants+"/"+cin,etudiant);
 }
