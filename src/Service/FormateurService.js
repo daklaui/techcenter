@@ -1,9 +1,9 @@
 import {baseURL} from '../Global/Const';
 const axios = require("axios").default;
-let urlGetEtudiants = baseURL+"/ListedesEtudiants";
-let urlGetEtudiantByCin = baseURL+"/getEtudiantByCin";
-let urlDeleteEtudiants = baseURL+"/SupprimerEtudiant";
-let urlModifierEtudiants = baseURL+"/UpdateEtudiant";
+let urlGetEtudiants = baseURL+"/ListedesFormateurs";
+let urlGetEtudiantByCin = baseURL+"/getFormateurByCin";
+let urlDeleteEtudiants = baseURL+"/SupprimerFormateur";
+let urlModifierEtudiants = baseURL+"/UpdateFormateur";
 export const  getUsers=()=>{
     return axios.get(urlGetEtudiants);
 }
