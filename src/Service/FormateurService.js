@@ -4,6 +4,7 @@ let urlGetEtudiants = baseURL+"/ListedesFormateurs";
 let urlGetEtudiantByCin = baseURL+"/getFormateurByCin";
 let urlDeleteEtudiants = baseURL+"/SupprimerFormateur";
 let urlModifierEtudiants = baseURL+"/UpdateFormateur";
+let urlAffecterFormateur = baseURL+"/AffecterFomateur";
 export const  getUsers=()=>{
     return axios.get(urlGetEtudiants);
 }
@@ -19,4 +20,8 @@ export const  removeFormateurByCin=(cin)=>{
 
 export const  modifierFormateurByCin=(cin,etudiant)=>{
     return axios.put(urlModifierEtudiants+"/"+cin,etudiant);
+}
+
+export const  affecterFormateur=(affecteObject)=>{
+    return axios.post(urlAffecterFormateur,affecteObject);
 }
