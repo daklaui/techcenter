@@ -1,25 +1,85 @@
 import React, { Component } from 'react'
-
+import {getUsers,affecterFormateur} from  '../../Service/FormateurService'
+import {getFormations} from  '../../Service/FormationService'
+import {getSessionByIdFormation} from  '../../Service/SessionServicey'
+import Swal from 'sweetalert2'
 class Affectation extends Component
 {
     
 constructor(props)
 {
+
+
   super(props)
   this.state={
     titreFormation:'',
     nomFormateur :'',
-    saisonFormation :''
-
+    saisonFormation :'',
+    formateurs: [{}],
+    formations: [{}],
+    sessions: [{}]
   };
+
+  getUsers().then((response) => {
+    this.setState({formateurs: response.data});
+  });
+  getFormations().then((response) => {
+    this.setState({formations: response.data});
+});
+
   this.handleChange = this.handleChange.bind(this);
+  this.SetValueListeSessions = this.SetValueListeSessions.bind(this);
  // this.handleSubmit = this.handleSubmit.bind(this);
 
+}
+mySubmitHandler = (event) => {
+  event.preventDefault();
+  console.log(this.state);
+  affecterFormateur(this.state).then(response=>{
+
+    if(response.status==200)
+    {
+ 
+     Swal.fire({
+       icon: 'success',
+       title: response.data,
+       showConfirmButton: false,
+       timer: 1500
+     })
+    }
+    else
+    {
+     Swal.fire({
+       icon: 'error',
+       title: response.data,
+       showConfirmButton: false,
+       timer: 1500
+     })
+    }
+  });
 }
 handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
   };
   
+
+  SetValueListeSessions(event)
+  {
+
+    getSessionByIdFormation(event.target.value).then((response) => {
+      if(response.data!=""&&response.data!=null)
+      {
+        this.setState({sessions: response.data});
+      }
+    else
+      {
+        this.setState({sessions:[{}]});
+      }
+
+  });
+
+  }
+
 render(){
    
     return (
@@ -57,22 +117,20 @@ render(){
        <div className="card-body">
      
          <div className="row">
-           <div className="col-lg-4">
-             <div className="form-group">
-               <label >Titre Formation :</label>
-                    
-            <select className="form-control form-control-sm" >
 
-            </select>
-             </div>
-           </div>
-           <div className="col-lg-4">
+         <div className="col-lg-4">
              <div className="form-group">
                <label >Nom Formateur :</label>
               
             
-            <select className="form-control form-control-sm" >
-
+            <select className="form-control form-control-sm" 
+            name="nomFormateur"  
+              value={this.state.nomFormateur} 
+             onChange={this.handleChange} >
+               <option value="">-------------------</option>
+            {this.state.formateurs.map((formation) => (
+            <option value={formation.cin}>{formation.nom}</option>
+            ))}
             </select>
             </div>
 
@@ -81,11 +139,38 @@ render(){
 
            <div className="col-lg-4">
              <div className="form-group">
+               <label >Titre Formation :</label>
+                    
+            <select className="form-control form-control-sm" 
+          name="titreFormation"
+             value={this.state.titreFormation} 
+             onChange= { (e) => {this.SetValueListeSessions(e);this.handleChange(e)}}
+            >
+               <option value="">-------------------</option>
+            {this.state.formations.map((formation) => (
+            <option value={formation.id}>{formation.titre}</option>
+            ))}
+            
+            </select>
+             </div>
+           </div>
+    
+
+           <div className="col-lg-4">
+             <div className="form-group">
                <label >Session :</label>
               
             
-            <select className="form-control form-control-sm" >
-
+            <select className="form-control form-control-sm"  
+             name="saisonFormation"
+             value={this.state.saisonFormation} 
+             onChange= {this.handleChange}>
+                <option value="">-------------------</option>
+            {this.state.sessions.map((session,index) => (
+            <option value={index}>{session.nom_du_session}</option>
+            ))}
+            
+            
             </select>
             </div>
 
