@@ -388,7 +388,7 @@ render(){
     <div className="card-footer">
     <div class="row">
               <div class="col-lg-4"></div>
-              <div class="col-lg-4">   <button type="submit" disabled={errors.disabledBtn} class="btn btn-primary btn-block">Modifier</button></div>
+              <div class="col-lg-4">   <button type="submit"  class="btn btn-primary btn-block">Modifier</button></div>
               <div class="col-lg-4"></div>
           </div>
     </div>

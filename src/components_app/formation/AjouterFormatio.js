@@ -6,9 +6,15 @@ import $ from 'jquery'
 import Swal from 'sweetalert2'
 const options = [
     { value: '', label: '*****************' },
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
+  { value: 'Débutant', label: 'Débutant' },
+  { value: 'Intermédiaire', label: 'Intermédiaire' },
+  { value: 'Expert', label: 'Expert' }
+]
+const options2 = [
+    { value: '', label: '*****************' },
+    { value: 'React', label: 'React' },
+    { value: 'Spring Boot', label: 'Spring Boot' },
+    { value: 'MongoDB', label: 'MongoDB' }
 ]
 const valide=true;
 
@@ -237,8 +243,8 @@ render(){
                style={{width: "100%"}}
                value={this.state.matier}
                onChange={this.handleChange} >
-                {options.map((option,i)=>(
-                     <option value={option.value}>{option.label}</option>
+                {options2.map((option2,i)=>(
+                     <option value={option2.value}>{option2.label}</option>
                 ))}
               
               

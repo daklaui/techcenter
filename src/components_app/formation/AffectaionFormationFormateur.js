@@ -14,7 +14,7 @@ constructor(props)
   this.state={
     titreFormation:'',
     nomFormateur :'',
-    saisonFormation :'',
+    sessionFormation :'',
     formateurs: [{}],
     formations: [{}],
     sessions: [{}]
@@ -163,7 +163,7 @@ render(){
             
             <select className="form-control form-control-sm"  
              name="saisonFormation"
-             value={this.state.saisonFormation} 
+             value={this.state.sessionFormation}
              onChange= {this.handleChange}>
                 <option value="">-------------------</option>
             {this.state.sessions.map((session,index) => (
