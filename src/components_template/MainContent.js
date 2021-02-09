@@ -12,6 +12,8 @@ import Affectation from '../components_app/formation/AffectaionFormationFormateu
 import AffectationEtudiant from '../components_app/etudiant/AffectaionFormationEtudiant'
 import ListeDesFormations from '../components_app/formation/ListeDesFormations'
 import UpdateFormation from '../components_app/formation/UpdateFormation'
+import AjouterSpecialité from '../components_app/Spécialités/AjouterSpécialité'
+import ListeDesSpécialités from "../components_app/Spécialités/ListeDesSpécialités";
 export default function MainContent() {
     return (
 <div className="content-wrapper">
@@ -34,6 +36,9 @@ export default function MainContent() {
 <Route path="/AjouterFormation" component={AjouterFormation}/>
 <Route path="/ListeDesFormations" component={ListeDesFormations}/>
 <Route path="/UpdateFormation/:id" component={UpdateFormation}/>
+
+<Route path="/AjouterSpécialité" component={AjouterSpecialité}/>
+<Route path="/ListeSpécialités" component={ListeDesSpécialités}/>
 </Switch>
 
  
