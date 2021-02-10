@@ -24,7 +24,7 @@ class ListeDesFormateurs extends Component
     super(props)
     this.state = {formateurs: [{}]};
 
-   
+
   }
 
   removeFormateur=(cin)=>{
@@ -38,14 +38,14 @@ class ListeDesFormateurs extends Component
             showConfirmButton: false,
             timer: 1500
           });
-  
+
           getUsers().then((response) => {
             this.setState({formateurs: response.data});
           });
         }
       });
-    } 
-    
+    }
+
 
   }
 
@@ -83,9 +83,9 @@ class ListeDesFormateurs extends Component
               {this.state.formateurs.map((formateur) => (
                   <tr>
                     <td>{formateur.cin}</td>
-                    <td>{formateur.nom}</td>
+                    <td>{formateur.nom} {formateur.prenom}</td>
                     <td >{formateur.date_de_naissance}</td>
-                    <td> 
+                    <td>
                       <button type="button" onClick={()=>this.removeFormateur(formateur.id)}  className="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i> Supprimer</button></td>
                   </tr>
               ))}

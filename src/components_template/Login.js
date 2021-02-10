@@ -13,7 +13,7 @@ export default function Login({ navigation }) {
   return (
     <div className="login-box">
       <div className="login-logo">
-        <a href="../../index2.html"><b>Tech</b>Acadimi</a>
+        <a href="../../index2.html"><b>Tech</b>Center</a>
       </div>
       {/* /.login-logo */}
       <div className="card">
@@ -21,11 +21,11 @@ export default function Login({ navigation }) {
           <p className="login-box-msg">Sign in to start your session</p>
           <form onSubmit={mySubmitHandler}>
             <div className="input-group mb-3">
-              <input 
-              type="text" 
-              className="form-control" 
+              <input
+              type="text"
+              className="form-control"
               onChange={(e)=>setUserName(e.target.value)}
-              placeholder="Email" />
+              placeholder="Username" />
               <div className="input-group-append">
                 <div className="input-group-text">
                   <span className="fas fa-envelope" />
@@ -33,8 +33,8 @@ export default function Login({ navigation }) {
               </div>
             </div>
             <div className="input-group mb-3">
-              <input 
-              type="password" 
+              <input
+              type="password"
               onChange={(e)=>setPassword(e.target.value)}
               className="form-control"
                placeholder="Password" />
@@ -45,7 +45,7 @@ export default function Login({ navigation }) {
               </div>
             </div>
             <div className="row">
-           
+
               {/* /.col */}
               <div className="col-12">
                 <button type="submit" className="btn btn-primary btn-block">Sign In</button>
@@ -53,9 +53,9 @@ export default function Login({ navigation }) {
               {/* /.col */}
             </div>
           </form>
-        
+
           {/* /.social-auth-links */}
-         
+
         </div>
         {/* /.login-card-body */}
       </div>

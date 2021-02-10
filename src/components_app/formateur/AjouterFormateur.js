@@ -100,7 +100,7 @@ class Formateur extends Component
             num_tel :'',
             mot_de_passe :'',
             cin :'',
-            
+
             errors: {
                 nom:'',
                 prenom :'',
@@ -313,14 +313,7 @@ class Formateur extends Component
                                             </div>
                                         </div>
 
-                                        <div className="col-lg-6">
-                                            <div className="form-group">
-                                                <label >Spécialités :</label>
-                                                <Select  isMulti className="form-control-sm" options={options}  name="liste_des_spécialités" closeMenuOnSelect={false} />
 
-
-                                            </div>
-                                        </div>
 
                                     </div>
 
