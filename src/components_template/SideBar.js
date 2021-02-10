@@ -54,6 +54,32 @@ export default function SideBar() {
             
           </ul>
         </li>
+
+        <li className="nav-item has-treeview">
+          <a href="#" className="nav-link ">
+            <i className="nav-icon fas fa-tachometer-alt" />
+            <p>
+              Gestion des formations
+              <i className="right fas fa-angle-left" />
+            </p>
+          </a>
+          <ul className="nav nav-treeview">
+            <li className="nav-item">
+              <Link to={"/AjouterFormation"} activeclassName={"active"}  className="nav-link">
+                <i className="far fa-circle nav-icon" />
+                <p>Ajouter une formation</p>
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to={"/ListeDesFormations"} activeclassName={"active"}  className="nav-link">
+                <i className="far fa-circle nav-icon" />
+                <p>Liste des formations</p>
+              </Link>
+            </li>
+
+          </ul>
+        </li>
         
        
         <li className="nav-item has-treeview">

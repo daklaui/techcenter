@@ -173,11 +173,11 @@ class Spécialité extends Component
                     <div className="container-fluid">
                         <div className="row mb-2">
                             <div className="col-sm-6">
-                                <h1 className="m-0 text-dark">Ajouter Formateur</h1>
+                                <h1 className="m-0 text-dark">Ajouter Spécialité</h1>
                             </div>{/* /.col */}
                             <div className="col-sm-6">
                                 <ol className="breadcrumb float-sm-right">
-                                    <li className="breadcrumb-item"><a href="#">Ajouter unformateur</a></li>
+                                    <li className="breadcrumb-item"><a href="#">Ajouter une spécialité</a></li>
                                     <li className="breadcrumb-item active">Ajouter</li>
                                 </ol>
                             </div>{/* /.col */}
@@ -195,13 +195,14 @@ class Spécialité extends Component
                         <div className="card card-primary">
                             <div className="card-header">
                                 <h3 className="card-title">
-                                    Ajouter Formateur
+                                    Ajouter une spécialité
                                 </h3>
                             </div>
                             <form onSubmit={this.mySubmitHandler} id="formAddEtudiant">
                                 <div className="card-body">
 
                                     <div className="row">
+                                        <div className="col-lg-4"></div>
                                         <div className="col-lg-4">
                                             <div className="form-group">
                                                 <label htmlFor="Hotel">Nom du spécialité :</label>

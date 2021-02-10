@@ -110,7 +110,7 @@ render(){
      <div className="card card-primary">
        <div className="card-header">
          <h3 className="card-title">
-         Affecter Formateur Formation
+             Affecter un formateur à une Formation
          </h3>
        </div>
        <form onSubmit={this.mySubmitHandler}>

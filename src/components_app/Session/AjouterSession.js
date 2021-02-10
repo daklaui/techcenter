@@ -20,6 +20,10 @@ const validationFormByField = (name, value) => {
         case 'nom_du_session':
             if (isMin(value, 3)) { return valide + '' } else { return "Veuillez fournir au moins 4 caractères."; }
             break;
+        case 'niveau':
+            if (isEmpty(value)) { return "Ce champ est obligatoire."; }
+            else { return valide + ''; }
+            break;
         case 'nb_places':
             if (isNumber(value)) { return valide + '' } else { return "Veuillez fournir un numéro valide."; }
             break;
@@ -64,7 +68,7 @@ class AjouterSession extends Component {
             date_de_début: '',
             date_de_fin: '',
             prix:'',
-            niveau:'',
+           niveau:'',
 
             errors: {
                 nom_du_session: '',
@@ -83,8 +87,8 @@ class AjouterSession extends Component {
 
     handleChange(event) {
 
-        const { name, value } = event.target;
-        let errors = this.state.errors;
+         const { name, value } = event.target;
+       let errors = this.state.errors;
         errors[name] = validationFormByField(name, value);
 
         if (isValideForm(errors)) {
@@ -206,7 +210,7 @@ class AjouterSession extends Component {
                                             <label htmlFor="Hotel">Niveau</label>
                                             <select
                                                 name="niveau"
-                                                className={"form-control form-control-sm "}
+                                                className={errors.niveau.length!=0?"form-control form-control-sm "+ (errors.niveau !== "true" ? "is-invalid" : "is-valid") : "form-control form-control-sm"}
                                                 style={{ width: "100%" }}
                                                 value={this.state.niveau}
                                                 onChange={this.handleChange} >
