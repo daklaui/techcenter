@@ -10,8 +10,8 @@ let urlDeleteSessionById = baseURL+"/SupprimerSession";
 let urlDeleteSessions= baseURL+"/SupprimerFormations";
 let urlModifierSession = baseURL+"/UpdateSession";
 
-export const  ajouterSession=(session,id)=>{
-    return axios.put(urlAddSession+"/"+id,session);
+export const  ajouterSession=(session)=>{
+    return axios.post(urlAddSession,session);
 }
 
 export const  getSessionByIdFormation=(id)=>{
@@ -25,8 +25,8 @@ export const  getSessionById=(id)=>{
 }
 
 
-export const  modifierSessionById=(id,index,session)=>{
-    return axios.put(urlModifierSession+"/"+id+"/"+index,session);
+export const  modifierSessionById=(id,session)=>{
+    return axios.put(urlModifierSession+"/"+id,session);
 }
 
 

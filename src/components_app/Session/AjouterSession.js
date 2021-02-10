@@ -114,9 +114,19 @@ class AjouterSession extends Component {
 
         if (isValideForm(errors)) {
             errors.disabledBtn = false;
-            //let res = add(,);
-            console.log(this.state);
-            ajouterSession(this.state, this.props.idFormation).then(response => {
+          const session={
+              "nom_du_session":this.state.nom_du_session,
+              "date_de_début":this.state.date_de_début,
+              "date_de_fin":this.state.date_de_fin,
+              "idFormation":this.props.idFormation,
+              "niveau":this.state.niveau,
+              "prix":this.state.prix,
+              "nb_places":this.state.nb_places,
+              "nb_inscrits":0,
+              "liste_de_formateurs":[],
+              "liste_des_etudiants":[],
+          }
+            ajouterSession(session).then(response => {
                 if (response.status == 200) {
 
                     Swal.fire({
@@ -210,7 +220,7 @@ class AjouterSession extends Component {
                                             <label htmlFor="Hotel">Niveau</label>
                                             <select
                                                 name="niveau"
-                                                className={errors.niveau.length!=0?"form-control form-control-sm "+ (errors.niveau !== "true" ? "is-invalid" : "is-valid") : "form-control form-control-sm"}
+                                                className="form-control form-control-sm "
                                                 style={{ width: "100%" }}
                                                 value={this.state.niveau}
                                                 onChange={this.handleChange} >

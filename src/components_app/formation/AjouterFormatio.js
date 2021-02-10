@@ -94,47 +94,52 @@ class Formation extends Component {
   mySubmitHandler = (event) => {
     event.preventDefault();
 
+ if(this.state.selectedFile!=null){
+  const formData = new FormData();  
+  formData.append( 
+    "file", 
+    this.state.selectedFile, 
+    this.state.selectedFile.name 
+  ); 
+ 
 
 
-      const formData = new FormData();  
-      formData.append( 
-        "file", 
-        this.state.selectedFile, 
-        this.state.selectedFile.name 
-      ); 
-     
+  uploadeImage(formData,null).then(data=>{
+    if(data.status==200)
+    {
+      const formation={
+        "titre":this.state.titre,
+        "description":this.state.description,
+        "image":data.data
+      }
+       // errors.disabledBtn =false;
+  ajouterFormation(formation).then(response => {
+    if (response.status == 200) {
 
-
-      uploadeImage(formData,null).then(data=>{
-        if(data.status==200)
-        {
-          const formation={
-            "titre":this.state.titre,
-            "description":this.state.description,
-            "image":data.data
-          }
-           // errors.disabledBtn =false;
-      ajouterFormation(formation).then(response => {
-        if (response.status == 200) {
-
-          Swal.fire({
-            icon: 'success',
-            title: response.data,
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }
-        else {
-          Swal.fire({
-            icon: 'error',
-            title: response.data,
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }
-      });
-        }
+      Swal.fire({
+        icon: 'success',
+        title: response.data,
+        showConfirmButton: false,
+        timer: 1500
       })
+    }
+    else {
+      Swal.fire({
+        icon: 'error',
+        title: response.data,
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+  });
+    }
+  })
+ }
+
+     else
+     {
+       alert("merci de importer une image ");
+     }
      
   
 
