@@ -3,7 +3,7 @@ const axios = require("axios").default;
 let urlAddSession = baseURL+"/AjoutSession";
 let urlGetSessions = baseURL+"/ListedesSessions";
 let urlGetSessionById = baseURL+"/getSessionById";
-let urlGetSessionByIdFormation = baseURL+"/getSessionByIdFormateur";
+let urlGetSessionByIdFormation = baseURL+"/getSessionByIdFormation";
 let urlGetSessionByIdFormateur = baseURL+"/getFormationById";
 let urlGetSessionByIdEtudiant = baseURL+"/getFormationById";
 let urlDeleteSessionById = baseURL+"/SupprimerSession";
@@ -20,8 +20,8 @@ export const  getSessionByIdFormation=(id)=>{
 
 
 
-export const  getSessionById=(id,index)=>{
-    return axios.get(urlGetSessionById+"/"+id+"/"+index);
+export const  getSessionById=(id)=>{
+    return axios.get(urlGetSessionById+"/"+id);
 }
 
 

@@ -8,19 +8,19 @@ import AjouterFormateur from './components_app/formateur/AjouterFormateur'
 export default function App() {
   return (
     <div>
-           
 
-      <Header/>
 
-    
-<Router>       <SideBar/>  <MainContent/></Router>
-  
- 
-  
-   
-      <Footer/>
- 
-    
+      <Header />
+
+
+      <Router>       <SideBar />  <MainContent /></Router>
+
+
+
+
+      <Footer />
+
+
     </div>
   )
 }

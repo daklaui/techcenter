@@ -13,13 +13,14 @@ class ListeDesSessions extends Component
         script.src='js/Content.js';
         script.async=true;
         document.body.appendChild(script);
+       
     }
     constructor(props)
     {
         super(props);
 
         this.state = {
-            sessions: [{}],
+            sessions: [],
         selectedComponent:'AjouterSession',
         indexOfObjectToUpdate:''};
 
@@ -110,18 +111,19 @@ class ListeDesSessions extends Component
                             <th>Date debut</th>
                             <th>Date fin</th>
                             <th>Max nombre des places</th>
+                            <th>#</th>
                         </tr>
                         </thead>
                         <tbody>
-                      { this.state.sessions.map((session,index) => (
+                      { this.state.sessions.map((session) => (
                             <tr>
                                 <td>{session.nom_du_session}</td>
                                 <td>{session.date_de_début}</td>
                                 <td >{session.date_de_fin}</td>
                                 <td >{session.nb_places}</td>
                                 <td> 
-                                    <button type="button" onClick={()=>this.updateSession(index)}  className="btn btn-warning btn-sm">   <i class="fas fa-edit"></i> Modifier </button>
-                                    <button type="button" onClick={()=>this.removeSession(index)}  className="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i> Supprimer</button></td>
+                                    <button type="button" onClick={()=>this.updateSession(session.id)}  className="btn btn-warning btn-sm">   <i class="fas fa-edit"></i> Modifier </button>
+                                    <button type="button" onClick={()=>this.removeSession(session.id)}  className="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i> Supprimer</button></td>
                             </tr>
                         ))}
                         </tbody>

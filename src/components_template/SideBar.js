@@ -65,24 +65,14 @@ export default function SideBar() {
             </p>
           </a>
           <ul className="nav nav-treeview">
-            <li className="nav-item">
-              <Link to={"/AjouterEtudiant"} activeclassName={"active"} className="nav-link">
-                <i className="far fa-circle nav-icon" />
-                <p>Ajouter un étudiant</p>
-              </Link>
-            </li>
+            
             <li className="nav-item">
               <Link to={"/ListeDesEtudiants"} activeclassName={"active"}  className="nav-link">
                 <i className="far fa-circle nav-icon" />
                 <p>Liste des étudiants</p>
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to={"/AffectationEtudiant"} activeclassName={"active"} className="nav-link">
-                <i className="far fa-circle nav-icon" />
-                <p>Affecter un étudiant</p>
-              </Link>
-            </li>
+           
           </ul>
         </li>
 

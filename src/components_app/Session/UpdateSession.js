@@ -56,8 +56,8 @@ class UpdateSession extends Component
           let idFormation=this.props.idFormation;
           let indexOfObjectToUpdate=this.props.indexOfObjectToUpdate;
        
-          let session =await getSessionById(idFormation,indexOfObjectToUpdate);
-    
+          let session =await getSessionById(indexOfObjectToUpdate);
+       console.log(session.data);
            this.setState({nom_du_session:session.data.nom_du_session});
            this.setState({nb_places:session.data.nb_places});
            this.setState({date_de_début:session.data.date_de_début});

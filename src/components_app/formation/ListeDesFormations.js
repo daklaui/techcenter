@@ -12,15 +12,16 @@ class ListeDesFormations extends Component
         script.src='js/Content.js';
         script.async=true;
         document.body.appendChild(script);
+        getFormations().then((response) => {
+            this.setState({formations: response.data});
+        });
     }
     constructor(props)
     {
         super(props)
-        this.state = {formations: [{}]};
+        this.state = {formations: []};
 
-        getFormations().then((response) => {
-            this.setState({formations: response.data});
-        });
+      
 
     }
 
@@ -64,13 +65,13 @@ class ListeDesFormations extends Component
 
             <div className="row">
                 <div className="col-lg-12">
-                    <table className="table table-bordered table-striped table-sm" id="example2">
+                    <table className="table table-bordered table-striped table-sm" id="example1">
                         <thead>
                         <tr>
                             <th>Titre</th>
                             <th>Description</th>
-                            <th>Niveau</th>
-                            <th>Matiéres</th>
+                        
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -78,9 +79,9 @@ class ListeDesFormations extends Component
                             <tr>
                                 <td>{formation.titre}</td>
                                 <td>{formation.description}</td>
-                                <td >{formation.niveau}</td>
-                                <td >{formation.matiéres}</td>
-                                <td> <button type="button" className="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Voir Details</button>
+                              
+                               
+                                <td> 
 
 
                                     <Link to={"/UpdateFormation/"+formation.id} className="btn btn-warning btn-sm">

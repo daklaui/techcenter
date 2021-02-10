@@ -14,34 +14,38 @@ class ListeDesFormateurs extends Component
     script.src='js/Content.js';
     script.async=true;
     document.body.appendChild(script);
+    getUsers().then((response) => {
+      this.setState({formateurs: response.data});
+    });
+
   }
   constructor(props)
   {
     super(props)
     this.state = {formateurs: [{}]};
 
-    getUsers().then((response) => {
-      this.setState({formateurs: response.data});
-    });
-
+   
   }
 
   removeFormateur=(cin)=>{
-    removeFormateurByCin(cin).then(response=>{
-      if(response.status==200)
-      {
-        Swal.fire({
-          icon: 'success',
-          title: response.data,
-          showConfirmButton: false,
-          timer: 1500
-        });
-
-        getUsers().then((response) => {
-          this.setState({formateurs: response.data});
-        });
-      }
-    });
+    if (window.confirm("Voulez vous vraiment supprimer ce formateur !")) {
+      removeFormateurByCin(cin).then(response=>{
+        if(response.status==200)
+        {
+          Swal.fire({
+            icon: 'success',
+            title: response.data,
+            showConfirmButton: false,
+            timer: 1500
+          });
+  
+          getUsers().then((response) => {
+            this.setState({formateurs: response.data});
+          });
+        }
+      });
+    } 
+    
 
   }
 
@@ -81,14 +85,8 @@ class ListeDesFormateurs extends Component
                     <td>{formateur.cin}</td>
                     <td>{formateur.nom}</td>
                     <td >{formateur.date_de_naissance}</td>
-                    <td> <button type="button" className="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Voir Details</button>
-
-
-                      <Link to={"/UpdateFormateur/"+formateur.cin} className="btn btn-warning btn-sm">
-                        <i class="fas fa-edit"></i> Modifier
-                      </Link>
-
-                      <button type="button" onClick={()=>this.removeFormateur(formateur.cin)}  className="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i> Supprimer</button></td>
+                    <td> 
+                      <button type="button" onClick={()=>this.removeFormateur(formateur.id)}  className="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i> Supprimer</button></td>
                   </tr>
               ))}
               </tbody>
