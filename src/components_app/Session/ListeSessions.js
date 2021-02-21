@@ -123,8 +123,9 @@ class ListeDesSessions extends Component
                                 <td >{session.nb_places}</td>
                                 <td> 
                                     <button type="button" onClick={()=>this.updateSession(session.id)}  className="btn btn-warning btn-sm">   <i class="fas fa-edit"></i> Modifier </button>
-                                    <button type="button" onClick={()=>this.removeSession(session.id)}  className="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i> Supprimer</button></td>
-                            </tr>
+                                    <button type="button" onClick={()=>this.removeSession(session.id)}  className="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i> Supprimer</button>
+                                    <button type="button" onClick={()=>window.location.href='/AddPlanning'}  className="btn btn-info btn-sm"> <i class="fas fa-trash-alt"></i> Ajouter planning</button></td>
+                               </tr>
                         ))}
                         </tbody>
                     </table>

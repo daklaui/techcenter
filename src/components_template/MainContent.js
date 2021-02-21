@@ -13,7 +13,8 @@ import AffectationEtudiant from '../components_app/etudiant/AffectaionFormationE
 import ListeDesFormations from '../components_app/formation/ListeDesFormations'
 import UpdateFormation from '../components_app/formation/UpdateFormation'
 import AjouterSpecialité from '../components_app/Spécialités/AjouterSpécialité'
-import ListeDesSpécialités from "../components_app/Spécialités/ListeDesSpécialités";
+import ListeDesSpécialités from "../components_app/Spécialités/ListeDesSpécialités"
+import AjouterPlanning from "../components_app/Session/AjouterPlanning";
 export default function MainContent() {
     return (
 <div className="content-wrapper">
@@ -39,6 +40,8 @@ export default function MainContent() {
 
 <Route path="/AjouterSpécialité" component={AjouterSpecialité}/>
 <Route path="/ListeSpécialités" component={ListeDesSpécialités}/>
+
+<Route path="/AddPlanning" component={AjouterPlanning}/>
 </Switch>
 
  
