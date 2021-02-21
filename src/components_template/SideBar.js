@@ -51,12 +51,7 @@ export default function SideBar() {
                 <p>Affecter un formateur</p>
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to={"/AddPlanning"} activeclassName={"active"} className="nav-link">
-                <i className="far fa-circle nav-icon" />
-                <p>Add TEST</p>
-              </Link>
-            </li>
+
             
           </ul>
         </li>
