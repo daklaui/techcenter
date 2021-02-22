@@ -41,7 +41,7 @@ export default function MainContent() {
 <Route path="/AjouterSpécialité" component={AjouterSpecialité}/>
 <Route path="/ListeSpécialités" component={ListeDesSpécialités}/>
 
-<Route path="/AddPlanning" component={AjouterPlanning}/>
+<Route path="/AddPlanning/:id" component={AjouterPlanning}/>
 </Switch>
 
  
